@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pic/123.png</file>
+        <file>pic/background.png</file>
+        <file>pic/blackadv.png</file>
+        <file>pic/blackboundary.png</file>
+        <file>pic/blackcan.png</file>
+        <file>pic/blackchar.png</file>
+        <file>pic/blackele.png</file>
+        <file>pic/blackgen.png</file>
+        <file>pic/blackhorse.png</file>
+        <file>pic/blacksod.png</file>
+        <file>pic/blue.png</file>
+        <file>pic/exit.png</file>
+        <file>pic/redadv.png</file>
+        <file>pic/redboundary.png</file>
+        <file>pic/redcan.png</file>
+        <file>pic/redchar.png</file>
+        <file>pic/redele.png</file>
+        <file>pic/redgen.png</file>
+        <file>pic/redhorse.png</file>
+        <file>pic/redsod.png</file>
+        <file>pic/regret.png</file>
+        <file>pic/restart.png</file>
+        <file>pic/bg.jpg</file>
+        <file>pic/pp.PNG</file>
+        <file>pic/pc.PNG</file>
+    </qresource>
+</RCC>
