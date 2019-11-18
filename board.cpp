@@ -145,7 +145,7 @@ bool Board::canmove(int chessid, int captureid, int from, int to)
         case 0:
         case 16:         //帅
         {
-             if((qAbs(from-to)==1&&findm(to,jiang,9))||(qAbs(from-to)==9&&findm(to,jiang,9)))
+             if((qAbs(from-to)==1&&findm(to,jiang,18))||(qAbs(from-to)==9&&findm(to,jiang,18)))
                 is = true;
              break;
         }
@@ -154,7 +154,7 @@ bool Board::canmove(int chessid, int captureid, int from, int to)
         case 17:   //士
         case 18:
         {
-            if(qAbs(from-to)==8&&findm(to,shi,5)||qAbs(from-to)==10&&findm(to,shi,5))
+            if(qAbs(from-to)==8&&findm(to,shi,10)||qAbs(from-to)==10&&findm(to,shi,10))
                 is = true;
             break;
         }
@@ -163,7 +163,7 @@ bool Board::canmove(int chessid, int captureid, int from, int to)
         case 19:  //象
         case 20:
         {
-            if(qAbs(from-to)==16&&findm(to,xiang,7)||qAbs(from-to)==20&&findm(to,xiang,7))
+            if(qAbs(from-to)==16&&findm(to,xiang,14)||qAbs(from-to)==20&&findm(to,xiang,14))
                 is = true;
             break;
         }
@@ -182,8 +182,10 @@ bool Board::canmove(int chessid, int captureid, int from, int to)
                 is = true;
             if(x2-x1==2&&qAbs(y2-y1)==1&&buju[y1*9+x1+1]==-1)
                 is = true;
-            if(x1-x2==2&&qAbs(x2-x1)==1&&buju[y1*9+x1-1]==-1)
+            if(x1-x2==2&&qAbs(y2-y1)==1&&buju[y1*9+x1-1]==-1)
                 is = true;
+            //if(is==false)
+               // qDebug()<<"ma cannot move from "<<from<<" to " <<to;
             break;
         }
         case 7:
@@ -297,10 +299,18 @@ QVector<mov> Board::getallstep()
 {
     QVector<mov> steps;
     for(int i = 0;i<16;i++)   //黑方的所有棋子
+    {
+        if(weizhi[i]==-1){
+            qDebug()<<"chess "<<i<<"be eated!";
+            continue;
+        }
+         qDebug()<<"chess "<<i<<"is thinking!";
         for(int j = 0;j<90;j++)  //棋盘所有的位置
         {
              mov ct(i,buju[j],weizhi[i],j);
-            if(buju[j]<16&&buju[j]>-1)continue;  //该位置位己方棋子
+            if(buju[j]<16&&buju[j]>-1)
+                continue;  //该位置位己方棋子
+           //if(i==0) qDebug()<<"chess "<<i<<" from "<<weizhi[i]<<" to "<<j<<" is thinking!";
             //qDebug()<<"the  move info name--"<<ct.name<<" ";
             //qDebug()<<"the  move info capture--"<<ct.capture<<" ";
             //qDebug()<<"the  move info from--"<<ct.from<<" ";
@@ -311,6 +321,7 @@ QVector<mov> Board::getallstep()
                 steps.push_back(ct);
             }
         }
+    }
     qDebug()<<"total passible step---"<<steps.count();
     return steps;
 }
